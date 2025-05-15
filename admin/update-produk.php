@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if( !isset($_SESSION["login"]) ) {
-	header("Location: login.php");
-	exit;
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
 }
 
 require 'function.php';
@@ -11,30 +11,28 @@ require 'function.php';
 // ambil data di URL
 $id = $_GET['id'];
 
-$produk= query("SELECT * FROM produk WHERE id = '$id'")[0];
+$produk = query("SELECT * FROM produk WHERE id = '$id'")[0];
 
 
 // cek apakah tombol submit sudah ditekan atau belum
-if( isset($_POST["submit"]) ) {
-	
-	// cek apakah data berhasil diubah atau tidak
-	if( ubah($_POST) > 0 ) {
-		echo "
+if (isset($_POST["submit"])) {
+
+    // cek apakah data berhasil diubah atau tidak
+    if (ubah($_POST) > 0) {
+        echo "
 			<script>
 				alert('data berhasil diubah!');
 				document.location.href = 'index.php';
 			</script>
 		";
-	} else {
-		echo "
+    } else {
+        echo "
 			<script>
 				alert('data gagal diubah!');
 				document.location.href = 'index.php';
 			</script>
 		";
-	}
-
-
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -53,7 +51,7 @@ if( isset($_POST["submit"]) ) {
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    
+
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -74,7 +72,7 @@ if( isset($_POST["submit"]) ) {
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon ">
-                <i class='bx bxs-store'></i>
+                    <i class='bx bxs-store'></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Mahastore</div>
             </a>
@@ -114,7 +112,7 @@ if( isset($_POST["submit"]) ) {
             </li>
             <!-- Nav Item - Pages Collapse Menu -->
 
-           
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -167,122 +165,122 @@ if( isset($_POST["submit"]) ) {
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                
+
                 <div class="container-fluid">
 
-                <div class="container" >
+                    <div class="container">
 
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Update Produk</h6>
-                        </div>
-                        <div class="container">
-                            <div class="table-responsive">
-                                <form action="" method="post" id="produk" enctype="multipart/form-data">
-                                <input type="hidden" name="id" value="<?= $produk["id"]; ?>">
-                                <input type="hidden" name="gambarLama" value="<?= $produk["gambar"]; ?>">
-                                    <div class="mb-3">
-                                        <label for="nama_barang" class="form-label">Nama Produk : </label>
-                                        <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="<?= $produk["nama_barang"]; ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="deskripsi" class="form-label">Deksripsi : </label>
-                                        <textarea id="summernote" class="form-control"  name="deskripsi" ><?= $produk["deskripsi"]; ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="harga" class="form-label">Harga Produk : </label>
-                                        <input type="number" class="form-control" name="harga" id="harga" value="<?= $produk["harga"]; ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="stok" class="form-label">Stok : </label>
-                                        <input type="number" class="form-control" name="stok" id="stok" value="<?= $produk["stok"]; ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="status">Status :</label>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Update Produk</h6>
+                            </div>
+                            <div class="container">
+                                <div class="table-responsive">
+                                    <form action="" method="post" id="produk" enctype="multipart/form-data">
+                                        <input type="hidden" name="id" value="<?= $produk["id"]; ?>">
+                                        <input type="hidden" name="gambarLama" value="<?= $produk["gambar"]; ?>">
+                                        <div class="mb-3">
+                                            <label for="nama_barang" class="form-label">Nama Produk : </label>
+                                            <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="<?= $produk["nama_barang"]; ?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="deskripsi" class="form-label">Deksripsi : </label>
+                                            <textarea id="summernote" class="form-control" name="deskripsi"><?= $produk["deskripsi"]; ?></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="harga" class="form-label">Harga Produk : </label>
+                                            <input type="number" class="form-control" name="harga" id="harga" value="<?= $produk["harga"]; ?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="stok" class="form-label">Stok : </label>
+                                            <input type="number" class="form-control" name="stok" id="stok" value="<?= $produk["stok"]; ?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="status">Status :</label>
                                             <select name="status" id="status" class="custom-select selevt">
-                                            <option value="1" <?php echo isset($status) && $status == 1 ? 'selected' : '' ?>>Masih Ada</option>
-                                            <option value="0" <?php echo isset($status) && $status == 0 ? 'selected' : '' ?>>Stok Habis</option>
+                                                <option value="1" <?php echo isset($status) && $status == 1 ? 'selected' : '' ?>>Masih Ada</option>
+                                                <option value="0" <?php echo isset($status) && $status == 0 ? 'selected' : '' ?>>Stok Habis</option>
                                             </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="gambar">Gambar :</label> <br>
-                                        <img src="img/<?= $buku['gambar']; ?>" width="40"> <br>
-                                        <input type="file" name="gambar" id="gambar">
-                                        
-                                    </div>
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary" name="submit">Ubah Data</button>
-                                    </div> 
-                                </form>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="gambar">Gambar :</label> <br>
+                                            <img src="img/<?= $buku['gambar']; ?>" width="40"> <br>
+                                            <input type="file" name="gambar" id="gambar">
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-primary" name="submit">Ubah Data</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-            <!-- End of Main Content -->
+                    <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Hamzah Raihan Ikhsanul Fikri</span>
-                    </div>
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; Hamzah Raihan Ikhsanul Fikri</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
+
                 </div>
-            </footer>
-            <!-- End of Footer -->
+                <!-- End of Content Wrapper -->
 
-        </div>
-        <!-- End of Content Wrapper -->
+            </div>
+            <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout.php">Logout</a>
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="logout.php">Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <script>
-      $('#summernote').summernote({
-        tabsize: 2,
-        height: 120
-      });
-    </script>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script>
+                $('#summernote').summernote({
+                    tabsize: 2,
+                    height: 120
+                });
+            </script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+            <!-- Page level plugins -->
+            <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+            <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    
+            <!-- Page level custom scripts -->
+            <script src="js/demo/datatables-demo.js"></script>
+
 </body>
 
 </html>
